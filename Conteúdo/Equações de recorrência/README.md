@@ -59,3 +59,23 @@ Para o segundo caso, a ideia é a mesma do primeiro, ou seja, encontrar termo ge
 o termo genérico é representado por $n - i$, o último termo de chamada da função é três, logo $i = n - 3$. Portanto, tem-se:
 
 $$\sum_{i=0}^{n-3} (1) + 2$$
+
+### Caso extra
+
+Julgue verdadeiro ou falso de acordo com a afirmação: a função abaixo possui ordem de complexidade $$O(n)$$?
+
+$$T(n) =
+\begin{cases}
+T(n-1) + (n-1), & \text{se } n > 0 \\
+2, & \text{se } n = 0
+\end{cases}$$
+
+Para isso, basta aplicar o mesmo raciocínio dos problemas de cima, todavia haverá diferenças na manipulação de fórmulas. Desse modo, tendo a função quando $n > 0$, é possível afirmar que, a cada chamada de recursão, o valor do parâmetro $n$ da função diminui em uma unidade bem como o termo $(n - 1)$ ao lado. Isso implica em dizer que:
+
+$$T(n-i) = T(n-i-1) + (n-i-1)$$
+
+Desse modo, sabendo que a última chamada da função ocorre quando $n = 1$, é possível achar o limite superior sendo $n - i = 1$, o que resulta em $i = n - 1$. Já o limite inferior do somatório se inicia em zero. Sendo assim, tem-se:
+
+$$f(n) = \sum_{i=0}^{n-1}(n-i-1) = n^2 - \frac{n(n-1)}{2} - n$$
+
+Feito isso, basta igualar o $f(n)$ a $c * g(n)$, em que $g(n)$ é a função da notação big O, e aplicar o limite quando $n$ tende a infinito. Ao final, como o valor do limite resultará em infinito, a afirmação é falsa.
